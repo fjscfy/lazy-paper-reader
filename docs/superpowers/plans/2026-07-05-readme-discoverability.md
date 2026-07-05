@@ -186,7 +186,7 @@ Run:
 
 ```bash
 python3 -m unittest discover -s tests -v
-PYTHONPATH=/tmp/lazy-paper-reader-validator-deps python3 /Users/appleair/.codex/skills/.system/skill-creator/scripts/quick_validate.py skills/lazy-paper-reader
+PYTHONPATH=/tmp/lazy-paper-reader-validator-deps python3 "$HOME/.codex/skills/.system/skill-creator/scripts/quick_validate.py" skills/lazy-paper-reader
 git diff --check
 ```
 
