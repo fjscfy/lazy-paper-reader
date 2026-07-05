@@ -116,6 +116,14 @@ class LazyPaperReaderContractTests(unittest.TestCase):
                     f"placeholder or personal path found in {path}",
                 )
 
+    def test_readme_is_english_first_and_uses_official_install_path(self):
+        text = (REPO_ROOT / "README.md").read_text(encoding="utf-8")
+        self.assertIn("Interactive paper reading, not one-shot summarization", text)
+        self.assertIn('$HOME/.agents/skills/lazy-paper-reader', text)
+        self.assertNotIn('$CODEX_HOME/skills/lazy-paper-reader', text)
+        chinese_heading = text.index("## 中文说明")
+        self.assertGreater(chinese_heading, text.index("## License"))
+
 
 if __name__ == "__main__":
     unittest.main()

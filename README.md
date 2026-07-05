@@ -1,37 +1,59 @@
 # lazy-paper-reader
 
-一个面向研究论文的交互式 Codex Skill。它不会一次性生成论文摘要，而是陪你按阶段读完论文，并把双方确认过的理解持续写入同一份 Markdown 笔记。
+Interactive paper reading, not one-shot summarization.
 
-## 它怎么读论文
+`lazy-paper-reader` is a Codex Agent Skill that helps you reconstruct a paper's argument and evidence stage by stage. It explains one section at a time, resolves questions in conversation, and updates a single Markdown note only after you confirm the interpretation.
 
-阅读顺序固定为：
+## Why use it?
 
-1. 标题与任务定位
-2. 引言的论证链
-3. 方法与动机的对应关系
-4. 实验设置、证据与结论
-5. 最终记忆点、真实增量、假设与局限
+- Reads in stages instead of overwhelming you with a full-paper summary.
+- Connects each method design to its motivation and author justification.
+- Separates paper statements, reasonable inference, and critique.
+- Treats experiments as evidence: what each result supports and what it does not.
+- Resumes from an existing Markdown note without overwriting your wording.
+- Adds a dedicated review profile for autonomous-driving world models.
 
-第一遍默认跳过 Related Work；只有在核对创新性时才回看相关段落。每一阶段都会先讲解并回答问题，得到你的明确确认后才更新笔记。
+## Reading workflow
 
-支持本地 PDF、论文链接、论文标题和已有 Markdown 笔记。针对自动驾驶 World Model 论文，仓库还提供了一套额外的分析视角，用来检查闭环价值、因果性、时空一致性和条件信息来源。
+1. Title and task positioning
+2. Introduction and its argument chain
+3. Method, motivation, data flow, and distinctive design choices
+4. Experimental setup, qualitative evidence, and quantitative evidence
+5. Conclusion with three retrieval anchors:
+   - One-sentence memory point
+   - What is genuinely new
+   - Key assumptions and limitations
 
-## 安装
+Related Work is skipped on the first pass and revisited only when a novelty claim needs verification.
 
-克隆仓库，并把 `skills/lazy-paper-reader` 目录复制到你的 `$CODEX_HOME/skills/`：
+## Supported inputs
+
+- A local PDF
+- An official paper URL
+- A paper title to resolve to a primary source
+- An existing Markdown note to resume
+
+## Install
+
+Codex discovers user-level Agent Skills from `$HOME/.agents/skills`.
 
 ```bash
 git clone https://github.com/fjscfy/lazy-paper-reader.git
-cp -R lazy-paper-reader/skills/lazy-paper-reader "$CODEX_HOME/skills/lazy-paper-reader"
+mkdir -p "$HOME/.agents/skills"
+cp -R lazy-paper-reader/skills/lazy-paper-reader "$HOME/.agents/skills/lazy-paper-reader"
 ```
 
-重启 Codex 后，可以这样使用：
+Codex detects skill changes automatically. If the skill does not appear, restart Codex.
+
+Invoke it explicitly:
 
 ```text
 Use $lazy-paper-reader to guide me through this paper stage by stage and maintain one Markdown note.
 ```
 
-## 仓库结构
+Codex may also invoke it implicitly when your request matches the skill description.
+
+## Repository structure
 
 ```text
 skills/lazy-paper-reader/
@@ -46,3 +68,9 @@ skills/lazy-paper-reader/
 ## License
 
 [MIT](LICENSE)
+
+## 中文说明
+
+`lazy-paper-reader` 是一个交互式 Codex 论文阅读 Skill。它不会一次性生成整篇摘要，而是按“标题与任务定位 → 引言 → 方法 → 实验 → 结论”逐阶段讲解；只有在你确认当前理解后，才会更新同一份 Markdown 笔记。
+
+它支持本地 PDF、论文链接、论文标题和已有笔记，并为自动驾驶 World Model 论文提供额外的分析视角。用户级安装目录为 `$HOME/.agents/skills/lazy-paper-reader`。
