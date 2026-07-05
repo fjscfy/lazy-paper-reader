@@ -34,10 +34,11 @@ For every stage:
 
 1. Read only the source material needed for that stage.
 2. Explain it conversationally, using the paper's logic rather than line-by-line translation.
-3. Pause for questions and correction.
+3. Pause for questions and correction. Retain only questions that materially change or sharpen the reader's understanding as candidate clarifications.
 4. Obtain explicit confirmation before writing that stage to the Markdown note.
-5. Append or revise only the confirmed section, preserving unrelated note content.
-6. Move to the next stage only after the write is complete.
+5. Append or revise only the confirmed section. At its end, write the selected questions with the reader's original wording and concise, confirmed answers; omit the subsection when no question qualifies.
+6. Preserve unrelated note content.
+7. Move to the next stage only after the write is complete.
 
 Never read and summarize the entire paper before the first response. Never write an unconfirmed interpretation. If the user changes an interpretation, update the note before continuing.
 
@@ -66,3 +67,4 @@ Do not replace the detailed note with these anchors; they are the retrieval hand
 - Copying result tables without stating what each experiment proves.
 - Treating author framing as established fact.
 - Producing many shallow headings that make the note harder to remember.
+- Logging every exchange as Q&A instead of curating questions that preserve a useful conceptual distinction.

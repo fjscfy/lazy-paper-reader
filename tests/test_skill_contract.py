@@ -124,6 +124,21 @@ class LazyPaperReaderContractTests(unittest.TestCase):
         chinese_heading = text.index("## 中文说明")
         self.assertGreater(chinese_heading, text.index("## License"))
 
+    def test_stage_questions_are_curated_and_confirmation_gated(self):
+        skill = self.read_required("SKILL.md").lower()
+        workflow = self.read_required("references/reading-workflow.md").lower()
+        markdown = self.read_required("references/markdown-structure.md").lower()
+
+        self.assertIn("questions and clarifications", markdown)
+        self.assertIn("original wording", markdown)
+        self.assertIn("confirmed answer", markdown)
+        self.assertIn("omit", markdown)
+        self.assertIn("candidate clarification", workflow)
+        self.assertIn("navigation", workflow)
+        self.assertIn("explicit confirmation", skill)
+        self.assertIn("selected questions", skill)
+        self.assertIn("not a transcript", markdown)
+
 
 if __name__ == "__main__":
     unittest.main()

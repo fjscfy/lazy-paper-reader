@@ -2,6 +2,14 @@
 
 Use this protocol stage by stage. At each stage, explain first, answer questions, and wait for explicit confirmation before updating the note.
 
+## Curate stage questions
+
+While discussing a stage, retain a question as a candidate clarification only when it exposes a mistaken assumption, separates easily confused concepts, clarifies the method or evidence path, changes the interpretation of a claim, or captures a reusable insight.
+
+Do not retain navigation requests, formatting preferences, conversational housekeeping, or repeated questions that add no new distinction. Merge overlapping candidates while preserving the clearest original wording from the reader.
+
+At explicit confirmation, pass the selected candidates to the Markdown note contract together with the confirmed stage summary. If later discussion changes an answer, revise both the summary and the clarification.
+
 ## 1. Title and Task Positioning
 
 Read the title closely, then use the abstract and opening introduction only to verify the initial interpretation.
