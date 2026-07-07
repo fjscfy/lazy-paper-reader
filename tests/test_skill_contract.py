@@ -63,7 +63,8 @@ class LazyPaperReaderContractTests(unittest.TestCase):
     def test_reading_workflow_covers_required_stages(self):
         text = self.read_required("references/reading-workflow.md")
         for stage in (
-            "Title and Task Positioning",
+            "Title Reading",
+            "Abstract and Task Positioning",
             "Introduction",
             "Method",
             "Experiments",
@@ -138,6 +139,34 @@ class LazyPaperReaderContractTests(unittest.TestCase):
         self.assertIn("explicit confirmation", skill)
         self.assertIn("selected questions", skill)
         self.assertIn("not a transcript", markdown)
+
+    def test_title_is_literal_and_abstract_handles_task_positioning(self):
+        skill = self.read_required("SKILL.md")
+        workflow = self.read_required("references/reading-workflow.md")
+        markdown = self.read_required("references/markdown-structure.md")
+        readme = (REPO_ROOT / "README.md").read_text(encoding="utf-8")
+
+        for text in (skill, workflow, markdown, readme):
+            self.assertIn("Title Reading", text)
+            self.assertIn("Abstract and Task Positioning", text)
+            self.assertLess(
+                text.index("Title Reading"),
+                text.index("Abstract and Task Positioning"),
+            )
+
+        title_block = workflow.split("## 1. Title Reading", 1)[1].split(
+            "## 2. Abstract and Task Positioning", 1
+        )[0].lower()
+        abstract_block = workflow.split(
+            "## 2. Abstract and Task Positioning", 1
+        )[1].split("## 3. Introduction", 1)[0].lower()
+
+        self.assertIn("directly supported", title_block)
+        self.assertIn("do not use the abstract or introduction", title_block)
+        self.assertIn("verification ledger", abstract_block)
+        self.assertIn("method", abstract_block)
+        self.assertIn("experiments", abstract_block)
+        self.assertIn("not report", abstract_block)
 
 
 if __name__ == "__main__":

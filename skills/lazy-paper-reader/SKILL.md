@@ -28,7 +28,7 @@ Support all four source modes: local PDF, paper URL, paper title, and existing M
 
 ## Run the stage loop
 
-Use this order: title and task positioning, introduction, method, experiments, conclusion.
+Use this order: Title Reading, Abstract and Task Positioning, Introduction, Method, Experiments, Conclusion.
 
 For every stage:
 

@@ -15,11 +15,12 @@ Interactive paper reading, not one-shot summarization.
 
 ## Reading workflow
 
-1. Title and task positioning
-2. Introduction and its argument chain
-3. Method, motivation, data flow, and distinctive design choices
-4. Experimental setup, qualitative evidence, and quantitative evidence
-5. Conclusion with three retrieval anchors:
+1. Title Reading
+2. Abstract and Task Positioning
+3. Introduction and its argument chain
+4. Method, motivation, data flow, and distinctive design choices
+5. Experimental setup, qualitative evidence, and quantitative evidence
+6. Conclusion with three retrieval anchors:
    - One-sentence memory point
    - What is genuinely new
    - Key assumptions and limitations
@@ -71,6 +72,6 @@ skills/lazy-paper-reader/
 
 ## 中文说明
 
-`lazy-paper-reader` 是一个交互式 Codex 论文阅读 Skill。它不会一次性生成整篇摘要，而是按“标题与任务定位 → 引言 → 方法 → 实验 → 结论”逐阶段讲解；只有在你确认当前理解后，才会更新同一份 Markdown 笔记。
+`lazy-paper-reader` 是一个交互式 Codex 论文阅读 Skill。它不会一次性生成整篇摘要，而是按“标题字面阅读 → 摘要与任务定位 → 引言 → 方法 → 实验 → 结论”逐阶段讲解；只有在你确认当前理解后，才会更新同一份 Markdown 笔记。
 
 它支持本地 PDF、论文链接、论文标题和已有笔记，并为自动驾驶 World Model 论文提供额外的分析视角。用户级安装目录为 `$HOME/.agents/skills/lazy-paper-reader`。

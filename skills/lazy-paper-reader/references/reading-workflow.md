@@ -10,22 +10,38 @@ Do not retain navigation requests, formatting preferences, conversational housek
 
 At explicit confirmation, pass the selected candidates to the Markdown note contract together with the confirmed stage summary. If later discussion changes an answer, revise both the summary and the clarification.
 
-## 1. Title and Task Positioning
+## 1. Title Reading
 
-Read the title closely, then use the abstract and opening introduction only to verify the initial interpretation.
+Explain only information directly supported by the words in the title:
 
-Establish:
+- the named research object, domain, or task, when explicit;
+- the named method family, representation, or system role, when explicit;
+- the characteristic or claim emphasized by the wording;
+- ambiguous terms or likely paper-specific names that must be resolved later.
 
-- the task being addressed;
-- the method family or representation;
-- the characteristic emphasized by the title;
-- the expected input and output;
-- the method's role in a larger system, if any;
-- the first hypothesis about what is genuinely distinctive.
+Do not use the abstract or introduction to enrich this stage. Do not infer exact inputs, outputs, motivation, architecture, novelty, or experimental outcome unless the title states them. Mark unresolved points as unknown rather than completing the story from convention.
 
-Do not treat the title as proof. Correct the initial hypothesis when the abstract or introduction narrows the claim.
+## 2. Abstract and Task Positioning
 
-## 2. Introduction
+Read the abstract as the authors' compressed account of the paper. Reconstruct:
+
+- the task and setting;
+- why the task matters, when stated;
+- the existing limitation or research gap;
+- the proposed high-level idea;
+- inputs and outputs only when reported or directly recoverable;
+- the main experimental result or capability claim;
+- the authors' claimed contribution.
+
+End with a short verification ledger:
+
+- claims to verify in Method;
+- claims to verify in Experiments;
+- information the abstract does not report.
+
+Treat this task positioning as provisional. Later sections may narrow or overturn it; do not present the abstract's framing as a final judgment.
+
+## 3. Introduction
 
 Read the introduction paragraph by paragraph in order.
 
@@ -44,7 +60,7 @@ task importance -> current approach -> unresolved problem -> proposed idea -> cl
 
 Do not translate every sentence. Do not accept a broad motivation when the actual method solves a narrower problem.
 
-## 3. Method
+## 4. Method
 
 Skip Related Work on the first pass. Read preliminaries only when they define notation or machinery required by the proposed method.
 
@@ -70,7 +86,7 @@ Then retain the paper's original subsection names. For each subsection, answer:
 
 For equations, explain the objective, symbols, tensor roles, and gradient path only to the depth needed to understand the method. Distinguish a new model architecture from a data pipeline, training strategy, loss, or inference heuristic.
 
-## 4. Experiments
+## 5. Experiments
 
 Read experiment infrastructure before results:
 
@@ -99,7 +115,7 @@ Check whether:
 
 Summarize conclusions rather than copying whole tables. Keep exact numbers when they determine the claim's magnitude or ranking.
 
-## 5. Conclusion
+## 6. Conclusion
 
 Synthesize the completed reading into exactly three anchors:
 

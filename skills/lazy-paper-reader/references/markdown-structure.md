@@ -5,7 +5,12 @@ Maintain one note per paper. Use a fixed top-level structure for comparison acro
 ## Default structure
 
 ```markdown
-# Title and Task Positioning
+# Title Reading
+
+# Abstract and Task Positioning
+## Claims to Verify in Method
+## Claims to Verify in Experiments
+## Not Reported in the Abstract
 
 # Introduction
 ## Paragraph 1: <role or claim>
@@ -41,6 +46,7 @@ Translate headings into the user's language. If an existing Markdown note uses e
 ## Writing rules
 
 - Write the confirmed understanding, not a transcript of the conversation.
+- Keep Title Reading literal; do not retrospectively enrich it with information from the abstract or later sections.
 - Prefer cohesive paragraphs for argument and concise bullets for mappings, configurations, or comparisons.
 - Keep the number of headings proportional to the paper. Do not create a heading for every small observation.
 - Preserve original subsection names under Method and Experiments so readers can return to the source.
@@ -51,6 +57,7 @@ Translate headings into the user's language. If an existing Markdown note uses e
 - If later discussion changes an answer, update the stage summary and its clarification together.
 - Do not force YAML frontmatter. Preserve it when already present.
 - Cite a page, section, equation, figure, or table when it materially helps verification.
+- When resuming a note with a combined title-and-task section, split it only if the current session revisits that material, and preserve the user's wording.
 
 ## Epistemic labels
 
