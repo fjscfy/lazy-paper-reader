@@ -168,6 +168,28 @@ class LazyPaperReaderContractTests(unittest.TestCase):
         self.assertIn("experiments", abstract_block)
         self.assertIn("not report", abstract_block)
 
+    def test_obsidian_math_formatting_contract(self):
+        text = self.read_required("references/markdown-structure.md")
+        for phrase in (
+            "## Obsidian math formulas",
+            'Inline math must use `$...$`',
+            'Block math must use `$$...$$`',
+            r'Do not use `\(...\)` or `\[...\]`',
+            "`String.raw`",
+            r"commands such as `\times`, `\theta`, and `\mid`",
+            r"no `\(`, `\)`, `\[`, or `\]` delimiters remain",
+            "every `$` and `$$` delimiter is paired",
+            "Never report completion before this check passes",
+        ):
+            self.assertIn(phrase, text)
+
+        self.assertIn(
+            "$$\n"
+            r"P(D_{1:N};Z_1)=\prod_{t=2}^{N}P_\theta(D_t\mid D_{<t},Z_1)."
+            "\n$$",
+            text,
+        )
+
 
 if __name__ == "__main__":
     unittest.main()

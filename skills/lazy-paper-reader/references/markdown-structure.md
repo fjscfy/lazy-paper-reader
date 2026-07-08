@@ -59,6 +59,35 @@ Translate headings into the user's language. If an existing Markdown note uses e
 - Cite a page, section, equation, figure, or table when it materially helps verification.
 - When resuming a note with a combined title-and-task section, split it only if the current session revisits that material, and preserve the user's wording.
 
+## Obsidian math formulas
+
+When the target note is located in an Obsidian vault:
+
+- Inline math must use `$...$`. This includes variables inside tables, such as `$Q_h$` and `$D_t$`.
+- Block math must use `$$...$$`, with the opening and closing `$$` delimiters each on their own line.
+- Do not use `\(...\)` or `\[...\]`; these delimiters can render differently in Obsidian and are vulnerable to string-escaping errors.
+- When LaTeX passes through a JavaScript string or tool wrapper, use a raw string such as `String.raw` or correctly double-escape backslashes. Verify that commands such as `\times`, `\theta`, and `\mid` reach the Markdown file with their backslashes intact.
+
+Use this inline form:
+
+```markdown
+The high-resolution branch `$Q_h$` produces context token `$Z_1$`.
+```
+
+Use this block form:
+
+```markdown
+$$
+P(D_{1:N};Z_1)=\prod_{t=2}^{N}P_\theta(D_t\mid D_{<t},Z_1).
+$$
+```
+
+For example, a JavaScript wrapper may construct LaTeX with:
+
+```javascript
+const formula = String.raw`P_\theta(D_t\mid D_{<t},Z_1)`;
+```
+
 ## Epistemic labels
 
 Use labels only where authorship or certainty could otherwise be confused:
@@ -79,4 +108,10 @@ Before every write:
 4. Merge clarification into the section instead of appending contradictory fragments.
 5. Write or revise the optional Questions and Clarifications subsection using original questions and confirmed answers.
 6. Modify only that section; never write unconfirmed content.
-7. Report the updated file path and stop at the next stage boundary.
+7. If the stage contains formulas and the note is in an Obsidian vault, re-read the affected paragraphs and verify all of the following:
+   - no `\(`, `\)`, `\[`, or `\]` delimiters remain;
+   - variables that should be formulas are not left as plain parenthesized text such as `(Q_h)` or `(D_t)`;
+   - every `$` and `$$` delimiter is paired, and each block delimiter occupies its own line;
+   - every LaTeX command retains its complete backslash.
+8. Before reporting the write complete, fix every formula-formatting problem found by the verification in step 7. Never report completion before this check passes.
+9. Report the updated file path and stop at the next stage boundary.
