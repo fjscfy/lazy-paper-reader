@@ -190,6 +190,32 @@ class LazyPaperReaderContractTests(unittest.TestCase):
             text,
         )
 
+    def test_uncertainty_check_is_conversational_and_precedes_confirmation(self):
+        skill = self.read_required("SKILL.md").lower()
+        workflow = self.read_required("references/reading-workflow.md").lower()
+        markdown = self.read_required("references/markdown-structure.md").lower()
+
+        stage_loop = skill.split("for every stage:", 1)[1].split(
+            "never read and summarize", 1
+        )[0]
+        self.assertIn("uncertainty check", stage_loop)
+        self.assertLess(
+            stage_loop.index("uncertainty check"),
+            stage_loop.index("explicit confirmation"),
+        )
+
+        for phrase in (
+            "least certain judgment",
+            "most likely overlooking",
+            "conversation only",
+            "do not write it to the markdown note",
+            "do not add it to candidate clarification tracking",
+            "run the two-item check again",
+        ):
+            self.assertIn(phrase, workflow)
+
+        self.assertNotIn("uncertainty check", markdown)
+
 
 if __name__ == "__main__":
     unittest.main()

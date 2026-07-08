@@ -12,6 +12,7 @@ Interactive paper reading, not one-shot summarization.
 - Treats experiments as evidence: what each result supports and what it does not.
 - Resumes from an existing Markdown note without overwriting your wording.
 - Adds a dedicated review profile for autonomous-driving world models.
+- Surfaces the least-certain judgment and likely blind spot before each stage is confirmed.
 
 ## Reading workflow
 

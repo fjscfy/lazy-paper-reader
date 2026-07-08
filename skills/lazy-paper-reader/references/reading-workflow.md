@@ -10,6 +10,19 @@ Do not retain navigation requests, formatting preferences, conversational housek
 
 At explicit confirmation, pass the selected candidates to the Markdown note contract together with the confirmed stage summary. If later discussion changes an answer, revise both the summary and the clarification.
 
+## Run a conversational uncertainty check
+
+After the stage explanation and question discussion have stabilized, but before requesting explicit confirmation, proactively answer exactly two prompts in the user's language:
+
+1. **Least certain judgment:** What judgment am I least certain about right now? Does the uncertainty come from information the paper does not state, insufficient evidence, or a relevant section that has not been read yet?
+2. **Possible blind spot:** What are we most likely overlooking or taking for granted right now? Are there unchecked assumptions, alternative explanations, counterexamples, or evaluation dimensions?
+
+Keep the answers concrete and tied to the current paper stage. Do not invent generic cautions merely to fill the structure. If no material issue is found, state that briefly and explain why the available evidence is sufficient at this stage.
+
+This check is conversation only by default. Do not write it to the Markdown note, do not treat it as a reader question, and do not add it to candidate clarification tracking unless the user explicitly asks to preserve that specific content.
+
+If the check triggers further discussion or changes the interpretation, revise the stage understanding and run the two-item check again before requesting confirmation.
+
 ## 1. Title Reading
 
 Explain only information directly supported by the words in the title:

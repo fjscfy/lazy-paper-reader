@@ -35,10 +35,11 @@ For every stage:
 1. Read only the source material needed for that stage.
 2. Explain it conversationally, using the paper's logic rather than line-by-line translation.
 3. Pause for questions and correction. Retain only questions that materially change or sharpen the reader's understanding as candidate clarifications.
-4. Obtain explicit confirmation before writing that stage to the Markdown note.
-5. Append or revise only the confirmed section. At its end, write the selected questions with the reader's original wording and concise, confirmed answers; omit the subsection when no question qualifies.
-6. Preserve unrelated note content.
-7. Move to the next stage only after the write is complete.
+4. Run the two-item conversational uncertainty check defined in `references/reading-workflow.md`. If it changes the interpretation, continue discussion, revise the stage understanding, and run the check again.
+5. Obtain explicit confirmation before writing that stage to the Markdown note.
+6. Append or revise only the confirmed section. At its end, write the selected questions with the reader's original wording and concise, confirmed answers; omit the subsection when no question qualifies.
+7. Preserve unrelated note content.
+8. Move to the next stage only after the write is complete.
 
 Never read and summarize the entire paper before the first response. Never write an unconfirmed interpretation. If the user changes an interpretation, update the note before continuing.
 
