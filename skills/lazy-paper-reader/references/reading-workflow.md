@@ -1,6 +1,6 @@
 # Interactive Paper-Reading Workflow
 
-Use this protocol stage by stage. At each stage, explain first, answer questions, and wait for explicit confirmation before updating the note.
+Use this protocol for whichever stage the user requests. The numbered order is the default route, not a prerequisite chain. Explain first and answer questions in both working modes; request explicit confirmation only before a Note-mode write.
 
 ## Curate stage questions
 
@@ -8,11 +8,11 @@ While discussing a stage, retain a question as a candidate clarification only wh
 
 Do not retain navigation requests, formatting preferences, conversational housekeeping, or repeated questions that add no new distinction. Merge overlapping candidates while preserving the clearest original wording from the reader.
 
-At explicit confirmation, pass the selected candidates to the Markdown note contract together with the confirmed stage summary. If later discussion changes an answer, revise both the summary and the clarification.
+In Note mode, at explicit confirmation, pass the selected candidates to the Markdown note contract together with the confirmed stage summary. If later discussion changes an answer, revise both the summary and the clarification. In Conversation mode, keep the exchange conversational unless the user switches modes and explicitly approves backfilling it.
 
 ## Run a conversational uncertainty check
 
-After the stage explanation and question discussion have stabilized, but before requesting explicit confirmation, proactively answer exactly two prompts in the user's language:
+After the stage explanation and question discussion have stabilized, run this check before the stage handoff and, in Note mode, before requesting explicit write confirmation. Proactively answer exactly two prompts in the user's language:
 
 1. **Least certain judgment:** What judgment am I least certain about right now? Does the uncertainty come from information the paper does not state, insufficient evidence, or a relevant section that has not been read yet?
 2. **Possible blind spot:** What are we most likely overlooking or taking for granted right now? Are there unchecked assumptions, alternative explanations, counterexamples, or evaluation dimensions?
@@ -21,7 +21,7 @@ Keep the answers concrete and tied to the current paper stage. Do not invent gen
 
 This check is conversation only by default. Do not write it to the Markdown note, do not treat it as a reader question, and do not add it to candidate clarification tracking unless the user explicitly asks to preserve that specific content.
 
-If the check triggers further discussion or changes the interpretation, revise the stage understanding and run the two-item check again before requesting confirmation.
+If the check triggers further discussion or changes the interpretation, revise the stage understanding and run the two-item check again before the stage handoff or Note-mode write confirmation.
 
 ## 1. Title Reading
 
@@ -53,6 +53,8 @@ End with a short verification ledger:
 - information the abstract does not report.
 
 Treat this task positioning as provisional. Later sections may narrow or overturn it; do not present the abstract's framing as a final judgment.
+
+Keep the abstract verification ledger alive across later stages. In Conversation mode, retain it in the working context. In Note mode, record it in the Abstract section and close its entries through linked updates after the relevant Method or Experiments stage is confirmed.
 
 ## 3. Introduction
 
@@ -99,6 +101,8 @@ Then retain the paper's original subsection names. For each subsection, answer:
 
 For equations, explain the objective, symbols, tensor roles, and gradient path only to the depth needed to understand the method. Distinguish a new model architecture from a data pipeline, training strategy, loss, or inference heuristic.
 
+Before completing this stage, revisit every Method-related item in the abstract verification ledger. Mark each as Confirmed, Refined, Unsupported, or Still unknown, and state the evidence. In Note mode, update those ledger entries together with the confirmed Method section.
+
 ## 5. Experiments
 
 Read experiment infrastructure before results:
@@ -127,6 +131,8 @@ Check whether:
 - compute and data advantages make the comparison unequal.
 
 Summarize conclusions rather than copying whole tables. Keep exact numbers when they determine the claim's magnitude or ranking.
+
+Before completing this stage, revisit every Experiments-related item in the abstract verification ledger. Mark each as Confirmed, Refined, Unsupported, or Still unknown, and state the supporting or missing evidence. In Note mode, update those ledger entries together with the confirmed Experiments section.
 
 ## 6. Conclusion
 

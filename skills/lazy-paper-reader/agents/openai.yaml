@@ -1,4 +1,4 @@
 interface:
   display_name: "lazy-paper-reader"
   short_description: "Interactive, evidence-aware research paper reading"
-  default_prompt: "Use $lazy-paper-reader to guide me through this paper stage by stage and maintain one Markdown note."
+  default_prompt: "Use $lazy-paper-reader to guide me through this paper stage by stage. Keep it conversational unless I provide or request a Markdown note."

@@ -195,7 +195,7 @@ class LazyPaperReaderContractTests(unittest.TestCase):
         workflow = self.read_required("references/reading-workflow.md").lower()
         markdown = self.read_required("references/markdown-structure.md").lower()
 
-        stage_loop = skill.split("for every stage:", 1)[1].split(
+        stage_loop = skill.split("for every requested stage:", 1)[1].split(
             "never read and summarize", 1
         )[0]
         self.assertIn("uncertainty check", stage_loop)
@@ -215,6 +215,52 @@ class LazyPaperReaderContractTests(unittest.TestCase):
             self.assertIn(phrase, workflow)
 
         self.assertNotIn("uncertainty check", markdown)
+
+    def test_conversation_mode_is_default_and_note_mode_is_opt_in(self):
+        text = self.read_required("SKILL.md").lower()
+        self.assertIn("## resolve the source and working mode", text)
+        modes = text.split("## resolve the source and working mode", 1)[1].split(
+            "## run the stage loop", 1
+        )[0]
+
+        self.assertIn("conversation mode", modes)
+        self.assertIn("default", modes)
+        self.assertIn("do not ask for an output path", modes)
+        self.assertIn("do not write a note", modes)
+        self.assertIn("note mode", modes)
+        self.assertIn("existing markdown note", modes)
+        self.assertIn("explicitly asks", modes)
+        self.assertIn("switch modes", modes)
+        self.assertIn("only in note mode", text)
+        self.assertIn("do not load the writing contract in conversation mode", text)
+
+    def test_stage_order_is_default_and_user_can_navigate_freely(self):
+        text = self.read_required("SKILL.md").lower()
+        stage_loop = text.split("## run the stage loop", 1)[1].split(
+            "## maintain evidence discipline", 1
+        )[0]
+
+        self.assertIn("default order", stage_loop)
+        for action in ("jump", "skip", "revisit"):
+            self.assertIn(action, stage_loop)
+        self.assertIn("user's requested stage", stage_loop)
+
+    def test_abstract_verification_ledger_is_closed_across_stages(self):
+        workflow = self.read_required("references/reading-workflow.md").lower()
+        markdown = self.read_required("references/markdown-structure.md").lower()
+
+        method = workflow.split("## 4. method", 1)[1].split(
+            "## 5. experiments", 1
+        )[0]
+        experiments = workflow.split("## 5. experiments", 1)[1].split(
+            "## 6. conclusion", 1
+        )[0]
+
+        self.assertIn("abstract verification ledger", method)
+        self.assertIn("abstract verification ledger", experiments)
+        for status in ("confirmed", "refined", "unsupported", "still unknown"):
+            self.assertIn(status, markdown)
+        self.assertIn("linked update", markdown)
 
 
 if __name__ == "__main__":

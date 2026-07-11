@@ -2,7 +2,7 @@
 
 Interactive paper reading, not one-shot summarization.
 
-`lazy-paper-reader` is a Codex Agent Skill that helps you reconstruct a paper's argument and evidence stage by stage. It explains one section at a time, resolves questions in conversation, and updates a single Markdown note only after you confirm the interpretation.
+`lazy-paper-reader` is a Codex Agent Skill that helps you reconstruct a paper's argument and evidence stage by stage. Use it for conversation-only reading or for maintaining a cumulative Markdown note.
 
 ## Why use it?
 
@@ -13,6 +13,15 @@ Interactive paper reading, not one-shot summarization.
 - Resumes from an existing Markdown note without overwriting your wording.
 - Adds a dedicated review profile for autonomous-driving world models.
 - Surfaces the least-certain judgment and likely blind spot before each stage is confirmed.
+- Lets you jump to, skip, or revisit any stage instead of forcing a linear reading order.
+- Reopens the abstract's claims after Method and Experiments so provisional claims become evidence-backed conclusions.
+
+## Working modes
+
+- **Conversation mode:** the default when you only want explanation or critique. No output path and no note writes.
+- **Note mode:** enabled when you provide a note or ask to create or update one. Every write requires confirmation.
+
+You can switch modes during a reading session. Earlier discussion is never backfilled into a note without confirmation.
 
 ## Reading workflow
 
@@ -26,7 +35,7 @@ Interactive paper reading, not one-shot summarization.
    - What is genuinely new
    - Key assumptions and limitations
 
-Related Work is skipped on the first pass and revisited only when a novelty claim needs verification.
+This is the default route. You can start from Method, jump to Experiments, revisit the Abstract, or skip any stage. Related Work is skipped on the first pass and revisited only when a novelty claim needs verification.
 
 ## Supported inputs
 
@@ -73,6 +82,6 @@ skills/lazy-paper-reader/
 
 ## 中文说明
 
-`lazy-paper-reader` 是一个交互式 Codex 论文阅读 Skill。它不会一次性生成整篇摘要，而是按“标题字面阅读 → 摘要与任务定位 → 引言 → 方法 → 实验 → 结论”逐阶段讲解；只有在你确认当前理解后，才会更新同一份 Markdown 笔记。
+`lazy-paper-reader` 是一个交互式 Codex 论文阅读 Skill，支持只对话、不写笔记的默认模式，也支持经确认后持续维护 Markdown 笔记。六阶段是推荐路线，不是强制顺序，可以直接跳到方法、实验或任意阶段。
 
 它支持本地 PDF、论文链接、论文标题和已有笔记，并为自动驾驶 World Model 论文提供额外的分析视角。用户级安装目录为 `$HOME/.agents/skills/lazy-paper-reader`。

@@ -43,6 +43,8 @@ Translate the subsection title and labels into the user's language. Omit it when
 
 Translate headings into the user's language. If an existing Markdown note uses equivalent headings, update them instead of adding duplicates.
 
+For each abstract verification-ledger item, use one of four statuses: **Confirmed**, **Refined**, **Unsupported**, or **Still unknown**. Add a short evidence pointer or reason after the status. Method and Experiments close their corresponding items instead of leaving the ledger permanently pending.
+
 ## Writing rules
 
 - Write the confirmed understanding, not a transcript of the conversation.
@@ -102,16 +104,17 @@ Render these labels in the user's language. Do not label obvious factual exposit
 
 Before every write:
 
-1. Identify the single confirmed top-level section.
+1. Identify the confirmed top-level section and whether it closes entries in the abstract verification ledger.
 2. Select only candidate questions that materially affected understanding.
-3. Re-read the existing note around that section.
+3. Re-read the existing note around the current section and any ledger entries it will close.
 4. Merge clarification into the section instead of appending contradictory fragments.
 5. Write or revise the optional Questions and Clarifications subsection using original questions and confirmed answers.
-6. Modify only that section; never write unconfirmed content.
-7. If the stage contains formulas and the note is in an Obsidian vault, re-read the affected paragraphs and verify all of the following:
+6. Modify only the current section unless a linked update is required to close the Abstract ledger or repair a confirmed contradiction. Keep every linked update minimal and evidence-backed; never write unconfirmed content.
+7. Re-read every modified section, including a linked update, and verify that the current explanation and ledger status agree.
+8. If the stage contains formulas and the note is in an Obsidian vault, re-read the affected paragraphs and verify all of the following:
    - no `\(`, `\)`, `\[`, or `\]` delimiters remain;
    - variables that should be formulas are not left as plain parenthesized text such as `(Q_h)` or `(D_t)`;
    - every `$` and `$$` delimiter is paired, and each block delimiter occupies its own line;
    - every LaTeX command retains its complete backslash.
-8. Before reporting the write complete, fix every formula-formatting problem found by the verification in step 7. Never report completion before this check passes.
-9. Report the updated file path and stop at the next stage boundary.
+9. Before reporting the write complete, fix every formula-formatting problem found by the verification in step 8. Never report completion before this check passes.
+10. Report the updated file path and stop at the next stage boundary.
