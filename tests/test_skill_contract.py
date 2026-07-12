@@ -190,7 +190,7 @@ class LazyPaperReaderContractTests(unittest.TestCase):
             text,
         )
 
-    def test_uncertainty_check_is_conversational_and_precedes_confirmation(self):
+    def test_uncertainty_summary_is_conversational_and_follows_stage_completion(self):
         skill = self.read_required("SKILL.md").lower()
         workflow = self.read_required("references/reading-workflow.md").lower()
         markdown = self.read_required("references/markdown-structure.md").lower()
@@ -198,23 +198,31 @@ class LazyPaperReaderContractTests(unittest.TestCase):
         stage_loop = skill.split("for every requested stage:", 1)[1].split(
             "never read and summarize", 1
         )[0]
-        self.assertIn("uncertainty check", stage_loop)
+        self.assertIn("stage uncertainty summary", stage_loop)
         self.assertLess(
-            stage_loop.index("uncertainty check"),
-            stage_loop.index("explicit confirmation"),
+            stage_loop.index("append or revise"),
+            stage_loop.index("stage uncertainty summary"),
+        )
+        self.assertLess(
+            stage_loop.index("stage uncertainty summary"),
+            stage_loop.index("offer the next stage"),
         )
 
         for phrase in (
-            "least certain judgment",
-            "most likely overlooking",
+            "after the confirmed write in note mode",
+            "after the stage discussion ends in conversation mode",
+            "least certain judgments",
+            "possible blind spots",
+            "do not force an item",
+            "zero, one, or multiple",
             "conversation only",
             "do not write it to the markdown note",
             "do not add it to candidate clarification tracking",
-            "run the two-item check again",
+            "rerun the summary after the corrected stage",
         ):
             self.assertIn(phrase, workflow)
 
-        self.assertNotIn("uncertainty check", markdown)
+        self.assertNotIn("stage uncertainty summary", markdown)
 
     def test_conversation_mode_is_default_and_note_mode_is_opt_in(self):
         text = self.read_required("SKILL.md").lower()

@@ -38,12 +38,13 @@ For every requested stage:
 1. Read only the source material needed for that stage.
 2. Explain it conversationally, using the paper's logic rather than line-by-line translation.
 3. Pause for questions and correction. Retain only questions that materially change or sharpen the reader's understanding as candidate clarifications.
-4. Run the two-item conversational uncertainty check defined in `references/reading-workflow.md`. If it changes the interpretation, continue discussion, revise the stage understanding, and run the check again.
-5. In Conversation mode, continue according to the user's direction without requesting write confirmation.
-6. In Note mode, obtain explicit confirmation before writing that stage to the Markdown note.
-7. Append or revise only the confirmed section and any permitted linked ledger update. At the section's end, write the selected questions with the reader's original wording and concise, confirmed answers; omit the subsection when no question qualifies.
-8. Preserve unrelated note content.
-9. After the conversation or write is complete, follow the user's requested stage or offer the next stage in the default order.
+4. In Conversation mode, treat the stage as complete only after its discussion and questions have ended; do not request write confirmation.
+5. In Note mode, obtain explicit confirmation before writing that stage to the Markdown note.
+6. Append or revise only the confirmed section and any permitted linked ledger update. At the section's end, write the selected questions with the reader's original wording and concise, confirmed answers; omit the subsection when no question qualifies.
+7. Preserve unrelated note content.
+8. Run the stage uncertainty summary defined in `references/reading-workflow.md`: after discussion completion in Conversation mode, and only after the confirmed write in Note mode.
+9. If the summary reveals a material problem, reopen discussion. In Note mode, obtain confirmation before correcting the note, then rerun the summary after the corrected write.
+10. After the stage is complete, follow the user's requested stage or offer the next stage in the default order.
 
 In guided mode, never read and summarize the entire paper before the first response. If the user explicitly requests a one-shot overview, honor that scope without pretending every stage has been completed. Never write an unconfirmed interpretation. In Note mode, if the user changes an interpretation, update the affected note section before continuing.
 

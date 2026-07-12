@@ -10,18 +10,20 @@ Do not retain navigation requests, formatting preferences, conversational housek
 
 In Note mode, at explicit confirmation, pass the selected candidates to the Markdown note contract together with the confirmed stage summary. If later discussion changes an answer, revise both the summary and the clarification. In Conversation mode, keep the exchange conversational unless the user switches modes and explicitly approves backfilling it.
 
-## Run a conversational uncertainty check
+## Summarize stage uncertainty after completion
 
-After the stage explanation and question discussion have stabilized, run this check before the stage handoff and, in Note mode, before requesting explicit write confirmation. Proactively answer exactly two prompts in the user's language:
+Run this summary once per completed stage, not after each assistant answer or user question. Run it after the stage discussion ends in Conversation mode, and after the confirmed write in Note mode.
 
-1. **Least certain judgment:** What judgment am I least certain about right now? Does the uncertainty come from information the paper does not state, insufficient evidence, or a relevant section that has not been read yet?
-2. **Possible blind spot:** What are we most likely overlooking or taking for granted right now? Are there unchecked assumptions, alternative explanations, counterexamples, or evaluation dimensions?
+Summarize only material findings under two categories in the user's language:
 
-Keep the answers concrete and tied to the current paper stage. Do not invent generic cautions merely to fill the structure. If no material issue is found, state that briefly and explain why the available evidence is sufficient at this stage.
+- **Least certain judgments:** identify any current judgment whose uncertainty comes from information the paper does not state, insufficient evidence, or a relevant section that has not been read yet.
+- **Possible blind spots:** identify any unchecked assumption, alternative explanation, counterexample, or evaluation dimension that could change the current interpretation.
 
-This check is conversation only by default. Do not write it to the Markdown note, do not treat it as a reader question, and do not add it to candidate clarification tracking unless the user explicitly asks to preserve that specific content.
+Do not force an item into either category. Each category may contain zero, one, or multiple material items. If both are empty, say briefly that no material uncertainty or blind spot was identified at this stage; do not invent generic cautions merely to fill the structure.
 
-If the check triggers further discussion or changes the interpretation, revise the stage understanding and run the two-item check again before the stage handoff or Note-mode write confirmation.
+This summary is conversation only by default. Do not write it to the Markdown note, do not treat it as a reader question, and do not add it to candidate clarification tracking unless the user explicitly asks to preserve that specific content.
+
+If the summary triggers further discussion or changes the interpretation, reopen the stage. In Note mode, obtain confirmation before correcting the note. Rerun the summary after the corrected stage in Conversation mode or after the corrected write in Note mode.
 
 ## 1. Title Reading
 
